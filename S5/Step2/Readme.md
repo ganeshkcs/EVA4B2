@@ -6,7 +6,8 @@ Target:
 
 To get less than 10 K parameters.
 
-Changes Done: 
+Changes Done:
+
 Changed number of convoltions and the size of kernels to get the required parameters.
 
 Results:
