@@ -19,12 +19,12 @@ Update the kernels/convolutions to achieve the accuracy.
 
 Results: 
 
-Parameters: 7,448
+Parameters: 9,668
 
-Best Train Accuracy: 98.92
+Best Train Accuracy: 99.12
 
-Best Test Accuracy: 99.43(15th Epoch)
+Best Test Accuracy: 99.49(12th Epoch)
 
 Analysis:
 
-The model gets test accuracy of 99.37, 99.4 and 99.43 in the last three epochs. The test accuracy seems to be consistent.
+The model gets test accuracy of more than 99.4.The test accuracy seems to be consistent.
