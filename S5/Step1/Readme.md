@@ -1,3 +1,6 @@
+Assignment : 
+
+To get 99.4 accuracy in MNIST dataset within 10k params and epochs <= 15.
 
 Target:
 
