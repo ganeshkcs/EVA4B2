@@ -9,8 +9,8 @@ Set Basic Training & Test Loop
 Results:
 
 Total params: 134,416
-Best Training Accuracy: 99.29
-Best Test Accuracy: 98.26
+Best Training Accuracy: 99.26
+Best Test Accuracy: 98.28
 
 Analysis/Comments:
 
