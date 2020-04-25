@@ -6,10 +6,11 @@ Set Transforms
 Set Data Loader
 Set Basic Working Code
 Set Basic Training & Test Loop
+
 Results:
 
-Total params: 134,416
-Best Training Accuracy: 99.26
+Total params: 176,400
+Best Training Accuracy: 99.56
 Best Test Accuracy: 98.28
 
 Analysis/Comments:
