@@ -11,8 +11,6 @@ Changes Done:
 
 Added GAP
 
-Reduce the Epochs to 15.
-
 Add Image Augumentaion.
 
 Update the kernels/convolutions to achieve the accuracy.
@@ -27,4 +25,4 @@ Best Test Accuracy: 99.49(12th Epoch)
 
 Analysis:
 
-The model gets test accuracy of more than 99.4.The test accuracy seems to be consistent.
+The model gets test accuracy of more than 99.4.The test accuracy seems to be consistent. The model is underfitting as we made the train dataset harder.
