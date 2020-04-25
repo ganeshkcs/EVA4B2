@@ -12,7 +12,7 @@ Parameters: 9,932
 
 Best Train Accuracy: 99.80
 
-Best Test Accuracy: 99.25
+Best Test Accuracy: 99.25(11th Epoch)
 
 Analysis:
 
