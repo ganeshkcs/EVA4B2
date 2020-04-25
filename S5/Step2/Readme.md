@@ -1,14 +1,21 @@
+Assignment : 
+
+To get 99.4 accuracy in MNIST dataset within 10k params and epochs <= 15.
 
 Target:
 
-Get the basic skeleton right.
 To get less than 10 K parameters.
-Changes Done: Changed the size of kernels to get the required parameters.
+
+Changes Done: 
+Changed number of convoltions and the size of kernels to get the required parameters.
 
 Results:
 
-Total params: 7,180
-Best Train Accuracy: 98.19
-Best Test Accuracy: 98.28
-Analysis: Getting parameters in range but we need to improve accuracy.
+Total params: 9,756
+Best Train Accuracy: 99.04
+Best Test Accuracy: 98.86
+
+Analysis: 
+
+Getting parameters in range but we need to improve accuracy.
 
