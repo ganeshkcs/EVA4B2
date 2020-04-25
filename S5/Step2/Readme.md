@@ -13,7 +13,9 @@ Changed number of convoltions and the size of kernels to get the required parame
 Results:
 
 Total params: 9,756
+
 Best Train Accuracy: 99.04
+
 Best Test Accuracy: 98.86
 
 Analysis: 
