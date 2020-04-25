@@ -7,20 +7,24 @@ Target:
 
 Increase test accuracy to 99.4
 
-Add GAP
+Changes Done:
 
-Add Image Augumentaion
+Added GAP
+
+Reduce the Epochs to 15.
+
+Add Image Augumentaion.
 
 Update the kernels/convolutions to achieve the accuracy.
 
-Results:
+Results: 
 
-Parameters: 9,932
+Parameters: 7,448
 
-Best Train Accuracy: 99.33
+Best Train Accuracy: 98.92
 
-Best Test Accuracy: 99.24
+Best Test Accuracy: 99.43(15th Epoch)
 
 Analysis:
 
-Overfitting is reduced and we need to increase the test accuracy.
+The model gets test accuracy of 99.37, 99.4 and 99.43 in the last three epochs. The test accuracy seems to be consistent.
