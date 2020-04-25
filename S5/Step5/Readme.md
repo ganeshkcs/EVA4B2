@@ -13,7 +13,7 @@ Added GAP
 
 Add Image Augumentaion.
 
-Update the kernels/convolutions to achieve the accuracy.
+Update the kernels/convolutions to change the capacity.
 
 Results: 
 
