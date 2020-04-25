@@ -20,7 +20,7 @@ Total params: 176,400
 
 Best Training Accuracy: 99.56
 
-Best Test Accuracy: 98.28
+Best Test Accuracy: 98.28(14th Epoch)
 
 Analysis/Comments:
 
