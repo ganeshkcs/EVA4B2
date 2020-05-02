@@ -26,6 +26,6 @@
 
 Both in GBN and BN the accuracy is best when the models are run "Without L1L2". The max accuracy achieved in both the cases are 99.45(GBN 22nd EPOCH without L1L22) and 99.54(BN 14th Epoch without L1L2).
 
-L1 and L2 seems to be spiking up and down for both GBN and BN.
+L1,L2 and L1L2 seems to be spiking up and down for both GBN and BN.
 
-Applying L1 and L2 Regularisation seems to decrease the accuracy(in my case).
+Applying L1 ,L2 and L1L2 Regularisation seems to decrease the accuracy(in my case).
