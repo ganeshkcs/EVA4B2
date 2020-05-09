@@ -8,6 +8,10 @@
 7. achieve 80% accuracy, as many epochs as you want. Total Params to be less than 1M. 
 8. upload to Github
 
+## Modular Approach
+
+To see the modular approach go [here](https://github.com/ganeshkcs/EVA4B2/tree/master/Utils).
+
 ## Loss/Accuracy Graph:
 
 ![loss_accuracy_graph](https://github.com/ganeshkcs/EVA4B2/blob/master/S7/Accuracy_Loss_Graph.png)
@@ -17,8 +21,7 @@
  
 ![misclassified](https://github.com/ganeshkcs/EVA4B2/blob/master/S7/misclassified_images.png) 
 
-## Modular Approach
-To see the modular approach go [here](https://github.com/ganeshkcs/EVA4B2/tree/master/Utils).
+
 
 ### Summary:
 
