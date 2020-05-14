@@ -40,6 +40,11 @@ class Transform(object):
                                        transforms.Normalize((mean,), (std,)) # The mean and std have to be sequences (e.g., tuples), therefore you should add a comma after the values.
                                        ])
         return train_transforms
+    
+    @staticmethod
+    def get_transforms(customised_transforms = []):
+        custom_transforms = transforms.Compose(customised_transforms)
+        return custom_transforms
 
 
 

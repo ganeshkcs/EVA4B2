@@ -6,7 +6,9 @@ import sys
 import torch
 import torch.nn as nn
 from torch.optim.lr_scheduler import StepLR
+from torch.optim.lr_scheduler import OneCycleLR
 import torch.optim as optim
+import torch.nn.functional as F
 
 
 class HelperModel(object):
@@ -27,10 +29,18 @@ class HelperModel(object):
         optimizer = optim.SGD(self.model.parameters(), lr=lr, momentum=momentum)
         return optimizer
 
-    def get_step_optimizer(self, lr=0.01, momentum=0.9, step_size=1, gamma=0.1):
-       optimizer = self.get_optimizer(self.model, lr, momentum)
+    def get_step_lr(self, lr=0.01, momentum=0.9, step_size=1, gamma=0.1, optimizer = None):
+       if optimizer is None:
+         optimizer = self.get_optimizer(lr, momentum)
        scheduler = StepLR(optimizer, step_size, gamma)
-       return optimizer
+       return scheduler
+
+    def get_one_cycle_lr(self, lr=0.01, momentum=0.9, optimizer = None, max_lr=0.1,total_steps=20):
+       if optimizer is None:
+         print("no optimser")
+         optimizer = self.get_optimizer(lr=lr, momentum = momentum)
+       scheduler = OneCycleLR(optimizer, max_lr=max_lr, total_steps=total_steps )
+       return scheduler
 
 
     def get_l2_regularizer(self, weight_decay=0.001, lr=0.01, momentum=0.9):
@@ -46,6 +56,7 @@ class HelperModel(object):
           reg_loss += torch.sum(param.abs())
         loss += l1_factor * reg_loss
         return loss
+
 
 
 

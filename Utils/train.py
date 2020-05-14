@@ -1,4 +1,5 @@
 import torch.nn.functional as F
+import torch.nn as nn
 from tqdm import tqdm
 from helper import HelperModel
 
@@ -8,7 +9,7 @@ class Train(object):
         self.train_losses = []
         self.train_acc = []
 
-    def train(self, model, device, train_loader, optimizer, l1_factor=None):
+    def train(self, model, device, train_loader, optimizer, criterion,l1_factor=None ):
         model.train()
         pbar = tqdm(train_loader)
         correct = 0
@@ -26,11 +27,15 @@ class Train(object):
             y_pred = model(data)
             # pdb.set_trace()
             # Calculate loss
-            loss = F.nll_loss(y_pred, target)
+            # loss = F.nll_loss(y_pred, target)
+            # criterion = nn.CrossEntropyLoss()
+            # loss = criterion(y_pred, target)
+
+            loss = criterion(y_pred, target)
+
             # update l1 regularizer if requested
             if l1_factor:
                 loss = HelperModel.apply_l1_regularizer(model, loss, l1_factor)
-
             self.train_losses.append(loss.item())
 
             # Backpropagation
