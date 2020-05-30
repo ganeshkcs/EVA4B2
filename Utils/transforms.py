@@ -9,8 +9,8 @@ class Transform(object):
             train_transforms = self.get_default_train_transforms(mean, std)
         if test_transforms is None:
             test_transforms = self.get_default_test_transforms(mean, std)
-        self.test_transforms = train_transforms
-        self.train_transforms = test_transforms
+        self.test_transforms = test_transforms
+        self.train_transforms = train_transforms
 
     def get_default_train_transforms(self, mean, std):
         train_transforms = transforms.Compose([

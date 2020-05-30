@@ -11,6 +11,7 @@ import torch.optim as optim
 import torch.nn.functional as F
 
 
+
 class HelperModel(object):
 
     def __init__(self, model):
@@ -46,6 +47,15 @@ class HelperModel(object):
     def get_l2_regularizer(self, weight_decay=0.001, lr=0.01, momentum=0.9):
         l2_regularizer = optim.SGD(self.model.parameters(), lr=lr, momentum=momentum, weight_decay=weight_decay)
         return l2_regularizer
+        
+    @staticmethod
+    def change(pil_img,device):
+      torch_img = transforms.Compose([
+          transforms.Resize((32, 32)),
+          transforms.ToTensor()
+      ])(pil_img).to(device)
+      normed_torch_img = transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])(torch_img)[None]
+      return torch_img,normed_torch_img    
 
 
     @staticmethod

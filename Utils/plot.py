@@ -1,5 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import torch
+import torchvision
+from google.colab import files
 
 class Plot(object):
 
@@ -86,7 +89,29 @@ class Plot(object):
       fig.savefig("cifar_misclassified_images.png")
 
     @staticmethod
-    def image_show(img):
+    def image_show(img, title=None, download_image=None):
+        fig = plt.figure(figsize=(7, 7))
         img = img / 2 + 0.5  # unnormalize
         npimg = img.numpy()
-        plt.imshow(np.transpose(npimg, (1, 2, 0)))
+        plt.imshow(np.transpose(npimg, (1, 2, 0)), interpolation='none')
+        if title is not None:
+            plt.title(title)
+        plt.pause(0.001)
+        if download_image:
+          fig.savefig(download_image)
+          files.download(download_image)
+     
+
+    @staticmethod
+    def show_cifar_classwise_image(train_loader, classes):
+        iter_train_loader = iter(train_loader)
+        images, labels = iter_train_loader.next()
+        for i in range(len(classes)):
+          index = [j for j in range(len(labels)) if labels[j] == i]
+          img = torchvision.utils.make_grid(images[index[0:5]],nrow=5,padding=2,scale_each=True)
+          img = img / 2 + 0.5  # unnormalize
+          npimg = img.numpy()
+          fig = plt.figure(figsize=(7,7))
+          plt.imshow(np.transpose(npimg, (1, 2, 0)),interpolation='none')
+          plt.title(classes[i])
+              

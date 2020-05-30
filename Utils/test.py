@@ -5,18 +5,22 @@ from tqdm import tqdm
 from helper import HelperModel
 
 
+
 class Test(object):
 
     def __init__(self):
         self.test_losses = []
         self.test_acc = []
         self.misclassified_images = []
+        self.trueclassified_images = []
 
     def update_misclassified_images(self, data, target, pred):
         target_change = target.view_as(pred)
         for i in range(len(pred)):
           if pred[i].item()!= target_change[i].item():
             self.misclassified_images.append([data[i], pred[i], target_change[i]])
+          else:
+            self.trueclassified_images.append([data[i], pred[i], target_change[i]])
 
     def test(self, model, device, test_loader, criterion, misclassfied_required=False):
         model.eval()
@@ -29,7 +33,6 @@ class Test(object):
                 # test_loss += F.nll_loss(output, target, reduction='sum').item()  # sum up batch loss
                 # criterion = nn.CrossEntropyLoss()
                 # test_loss += criterion(output, target).item() 
-                
                 
                 test_loss += criterion(output, target).item() 
                   
