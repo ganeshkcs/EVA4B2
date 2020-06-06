@@ -27,6 +27,32 @@ class Plot(object):
         except Exception as err:
             raise err
 
+    def plot_accuracy_graph(self,figsize = (15,10)):
+      fig = plt.figure(figsize=figsize)
+      ax = plt.subplot()
+      accuracy_list = [(self.test_acc,"test_accuracy"),(self.train_acc,"train_accuracy")]
+      for data in accuracy_list:
+          ax.plot(data[0], label=data[1])
+          plt.title("Accuracy Graph")
+      ax.legend()
+      plt.show()
+    
+    def plot_graph(self, plot_case="Accuracy"):
+      fig, ax = plt.subplots()
+      if plot_case == "Accuracy":
+          train_data = self.train_acc
+          test_data = self.test_acc
+      else:
+          train_data = self.train_losses
+          test_data = self.test_losses
+      plt.title("Change in training and validation {0}".format(plot_case.lower()))
+      plt.xlabel("Num of Epochs")
+      plt.ylabel(plot_case)
+      ax.plot(train_data, 'r', label='Train')
+      ax.plot(test_data, 'b', label='Validation')
+      ax.legend(loc='upper right')
+      plt.show()
+
     def plot_train_graph(self, plot_case="Accuracy"):
         try:
             fig = plt.figure(figsize=(9, 9))

@@ -9,7 +9,11 @@ from torch.optim.lr_scheduler import StepLR
 from torch.optim.lr_scheduler import OneCycleLR
 import torch.optim as optim
 import torch.nn.functional as F
-
+from gradcam import GradCAM, visualize_cam
+from plot import Plot
+from torchvision.utils import make_grid, save_image
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 class HelperModel(object):
@@ -47,6 +51,27 @@ class HelperModel(object):
     def get_l2_regularizer(self, weight_decay=0.001, lr=0.01, momentum=0.9):
         l2_regularizer = optim.SGD(self.model.parameters(), lr=lr, momentum=momentum, weight_decay=weight_decay)
         return l2_regularizer
+
+    def get_gradcam_images(self, model,layers,image_list,classes, figsize = (23,33),sub_plot_rows = 9, sub_plot_cols = 3, image_count=25 ):
+      fig = plt.figure(figsize=figsize)
+      for i in range(image_count):
+        heat_map_image = [image_list[i][0].cpu()/2+0.5]
+        result_image = [image_list[i][0].cpu()/2+0.5]
+        for model_layer in layers:
+          grad_cam = GradCAM(model, model_layer)
+          mask, _ = grad_cam(image_list[i][0].clone().unsqueeze_(0))
+          heatmap, result = visualize_cam(mask, image_list[i][0].clone().unsqueeze_(0)/2+0.5)
+          heat_map_image.extend([heatmap])
+          result_image.extend([result])
+        grid_image = make_grid(heat_map_image+result_image,nrow=len(layers)+1,pad_value=1)
+        npimg = grid_image.numpy()
+        sub = fig.add_subplot(sub_plot_rows, sub_plot_cols, i+1)
+        plt.imshow(np.transpose(npimg, (1, 2, 0)))
+        sub.set_title('P = '+classes[int(image_list[i][1])]+" A = "+classes[int(image_list[i][2])],fontweight="bold",fontsize=18)
+        sub.axis("off")
+        plt.tight_layout()
+        fig.subplots_adjust(wspace=0)
+    
         
     @staticmethod
     def change(pil_img,device):
