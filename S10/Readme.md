@@ -17,7 +17,7 @@
 ![albumentaion9](https://github.com/ganeshkcs/EVA4B2/blob/master/S10/images/truck_cutout.png)
 ![albumentaion10](https://github.com/ganeshkcs/EVA4B2/blob/master/S10/images/cat_cutout.png)
 
-## GradCam and heatmap visualization for 25 misclassified images in all layer
+## GradCam and Heatmap visualization for 25 misclassified images in all layers
 ![misclassified1](https://github.com/ganeshkcs/EVA4B2/blob/master/S10/images/misclassified_gradcam.png)
 
 ## Train and Validation Accuracy Change:
