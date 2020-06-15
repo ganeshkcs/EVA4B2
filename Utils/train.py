@@ -2,18 +2,29 @@ import torch.nn.functional as F
 import torch.nn as nn
 from tqdm import tqdm
 from helper import HelperModel
-
+import matplotlib.pyplot as plt
+import numpy as np
 
 class Train(object):
     def __init__(self):
         self.train_losses = []
         self.train_acc = []
+        self.train_lr = []
 
-    def train(self, model, device, train_loader, optimizer, criterion,l1_factor=None ):
+    def plot_cycle_lr(self):
+      plt.plot(np.arange(1,25), self.train_lr)
+      plt.xlabel('Epochs')
+      plt.ylabel("Learning rate")
+      plt.title("Lr v/s Epochs")
+      plt.show()
+
+    def train(self, model, device, train_loader, optimizer, criterion,l1_factor=None,scheduler=None ):
         model.train()
         pbar = tqdm(train_loader)
         correct = 0
         processed = 0
+        print('LR:',optimizer.param_groups[0]['lr'])
+        self.train_lr.append(optimizer.param_groups[0]['lr'])
         for batch_idx, (data, target) in enumerate(pbar):
             # get samples
             data, target = data.to(device), target.to(device)
@@ -41,6 +52,8 @@ class Train(object):
             # Backpropagation
             loss.backward()
             optimizer.step()
+            if(scheduler):
+              scheduler.step()
 
             # Update pbar-tqdm
 
