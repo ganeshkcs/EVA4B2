@@ -36,6 +36,22 @@ class Plot(object):
           plt.title("Accuracy Graph")
       ax.legend()
       plt.show()
+      
+    @staticmethod
+    def plot_acc_lr(lr_list = [],acc_list = []):
+      plt.plot(lr_list, acc_list)
+      plt.ylabel('Train Accuracy')
+      plt.xlabel("Learning rate")
+      plt.title("Lr v/s Accuracy")
+      plt.show()
+
+    @staticmethod
+    def plot_cycle_lr(epochs, lr_list):
+      plt.plot(np.arange(1,epochs), lr_list)
+      plt.xlabel('Epochs')
+      plt.ylabel("Learning rate")
+      plt.title("Lr v/s Epochs")
+      plt.show()
     
     def plot_graph(self, plot_case="Accuracy"):
       fig, ax = plt.subplots()

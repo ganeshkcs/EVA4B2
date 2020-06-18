@@ -4,6 +4,7 @@ from tqdm import tqdm
 from helper import HelperModel
 import torch.optim as optim
 import matplotlib.pyplot as plt
+import copy
 
 
 class LRAccuracy(object):
@@ -30,12 +31,14 @@ class LRAccuracy(object):
       plt.title("Lr v/s Accuracy")
       plt.show()
 
-    def range_test(self, model, device, train_loader, criterion, momentum = 0.9, weight_decay=0.005, l1_factor=None, min_lr = 0.001, max_lr=0.02, epochs = 10, ):
+    def range_test(self, model, device, train_loader, criterion, momentum = 0.9, weight_decay=0.0001, l1_factor=None, min_lr = 0.001, max_lr=0.03, epochs = 10, ):
         lr = min_lr
+        model = copy.deepcopy(model)
         for epoch in range(epochs):
-          optimizer = optim.SGD(model.parameters(), lr=lr, momentum=momentum, weight_decay=weight_decay) 
+          model_acc = copy.deepcopy(model)
+          optimizer = optim.SGD(model_acc.parameters(), lr=lr, momentum=momentum, weight_decay=weight_decay) 
           lr += (max_lr - min_lr)/epochs
-          model.train()
+          model_acc.train()
           pbar = tqdm(train_loader)
           correct = 0
           processed = 0
@@ -49,7 +52,7 @@ class LRAccuracy(object):
               # Because of this, when you start your training loop, ideally you should zero out the gradients so that you do the parameter update correctly.
 
               # Predict
-              y_pred = model(data)
+              y_pred = model_acc(data)
               # pdb.set_trace()
               # Calculate loss
               # loss = F.nll_loss(y_pred, target)
@@ -60,7 +63,7 @@ class LRAccuracy(object):
 
               # update l1 regularizer if requested
               if l1_factor:
-                  loss = HelperModel.apply_l1_regularizer(model, loss, l1_factor)
+                  loss = HelperModel.apply_l1_regularizer(model_acc, loss, l1_factor)
 
               # Backpropagation
               loss.backward()
