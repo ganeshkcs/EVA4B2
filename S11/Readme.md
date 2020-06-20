@@ -35,7 +35,7 @@
 ![albumentaion1](https://github.com/ganeshkcs/EVA4B2/blob/master/S11/images/bird_cutout.png)
 
 ### Finding Max LR using range test with inputs max lr:1e-1, start lr:1e-4 and num of iterations:980 i.e 10 epochs
-![lr_finder](https://github.com/ganeshkcs/EVA4B2/blob/master/S11/images/acc_lr.png
+![lr_finder](https://github.com/ganeshkcs/EVA4B2/blob/master/S11/images/acc_lr.png)
 
 ### One Cycle triangle using all trained lr for 24 epochs
 ![one_cycle](https://github.com/ganeshkcs/EVA4B2/blob/master/S11/images/one_cycle_training.png)
