@@ -12,7 +12,6 @@ This is to help in training custom dataset using YoloV3.
 
 ## Custom Dataset Training
 ![Collage of training images](https://github.com/ganeshkcs/EVA4B2/blob/master/S13/Assignment2/train_batch0.png)
-
 1. Create a folder called weights in the root folder of this project
 2. Download from: https://drive.google.com/open?id=1LezFG5g3BCW6iYaV89B2i64cqEUZD7e0
 3. Place 'yolov3-spp-ultralytics.pt' file in the weights folder
@@ -59,14 +58,11 @@ jerry
 15. Run this command ```python train.py --data data/customdata/custom.data --batch 20 --cache --cfg cfg/yolov3-custom.cfg --epochs 300 --nosave```
 16. You can predict any images in folder by running this command ```!python detect.py --conf-thres 0.2 --source data/customdata/testImg --output out_out```
 
-## Result after training for 300 Epochs
-
-![result](https://github.com/santhiya-v/EVA/blob/master/S13/yolov3_training/prediction.jpg)
-
 ## Prediction of YoloV3 trained model (for object Jerry) on Video
 
 1. https://youtu.be/qThk9ynBd_M
 2. https://youtu.be/-81RADbDCtc
+3. https://youtu.be/HbtuBvCc3AU
     
     
 
