@@ -69,6 +69,7 @@ depth images | [0.40361160039901733]| [0.19922664761543274]
     * Now all the white area would have been converted to transparent. Save/Export the image
 * Foreground mask was prepared by using opencv.  
     * Alpha (4th) channel of FG alone is created as separate 1 channel mask image. 
+    * Code: https://github.com/ganeshkcs/EVA4B2/blob/master/S15A/S15_FG_MASK.ipynb
 * **FG BG Preparation**
     * PIL was used
     * FG is overlaid on BG, at (x,y) of BG, using following code :
