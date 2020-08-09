@@ -159,6 +159,33 @@ Given an image with foreground objects and background image, predict the depth m
 
 ![REQ](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/PDA1.gif)
 
+## Model Evalution:
+
+While evealuating the model, there were following questions for which the answers were required.
+
+1. How to get multiple outputs.
+2. What is the loss function to choose.
+3. How many epocs to run.
+4. What optimiser and scheduler to use.
+5. At what size we need to send the images(inputs)
+
+After going throuh papers, finally settled for Unet arcitecture.
+
+The model would convolute for depth and mask in forward function and give two outputs.
+
+![model](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/model2.gif)
+
+The code for model can be found here ![mc](https://github.com/ganeshkcs/EVA4B2/blob/master/Utils/models/unet.py)
+
+
+
+
+
+
+
+
+
+
 
 
 
