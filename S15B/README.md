@@ -209,12 +209,34 @@ Also used Adam optimiser and ReduceLROnPlateau was used as scheduler.
 
 The code to get the output from model is implemented, the details are as below.
 
- * Parameters - 8M 
+ * Parameters - 8 Million 
  * Optimiser - Adam
  * Scheduler - ReduceLROnPlateau
  * Loss - BCE, BCE
  * Total No of Epochs trained for - 15
  * Total number of data used - 40K
+ 
+## Code Links 
+
+Model : https://github.com/ganeshkcs/EVA4B2/blob/master/Utils/models/unet.py
+
+Colab : https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/S15_Final_Code.ipynb
+
+Train : https://github.com/ganeshkcs/EVA4B2/blob/master/Utils/train.py
+
+Test : https://github.com/ganeshkcs/EVA4B2/blob/master/Utils/test.py
+
+Dataset : https://github.com/ganeshkcs/EVA4B2/blob/master/Utils/dataset_info.py
+
+DataLoader : https://github.com/ganeshkcs/EVA4B2/blob/master/Utils/dataloader.py
+
+Albumentaion : https://github.com/ganeshkcs/EVA4B2/blob/master/Utils/albumentation.py
+
+IOU/DICE : https://github.com/ganeshkcs/EVA4B2/blob/master/Utils/dice.py
+
+Modular( other files)  : https://github.com/ganeshkcs/EVA4B2/tree/master/Utils
+
+
 
 
 
