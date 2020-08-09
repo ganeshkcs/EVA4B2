@@ -191,7 +191,19 @@ The code for model can be found here. Code: https://github.com/ganeshkcs/EVA4B2/
 
 ## Loss and Accuracy:
 
-There are variuos loss and accuracy to choose from, so out of 
+There are variuos loss and accuracy to choose, namely
+
+1. SSIM
+2. BCEWithLogitLoss
+3. Dice Loss
+4. RMS Loss
+5. Dice Coeff(accuracy)
+6. IOU ( Accuracy )
+6. Pixelwise Comparison
+
+So chose BCEWithLogitLoss for mask and SSIM for Depth, but on implementation found that SSIM was not giving good results, decided to proceed with BCEWithLogitLoss for mask and depth, also used IOU for accuracy.
+
+
 
 
 
