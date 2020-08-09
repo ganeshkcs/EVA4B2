@@ -203,6 +203,19 @@ There are variuos loss and accuracy to choose, namely
 
 So chose BCEWithLogitLoss for mask and SSIM for Depth, but on implementation found that SSIM was not giving good results, decided to proceed with BCEWithLogitLoss for mask and depth, also used IOU for accuracy.
 
+Also used Adam optimiser and ReduceLROnPlateau was used as scheduler.
+
+## Implementation
+
+The code to get the output from model is implemented, the details are as below.
+
+ * Parameters - 8M 
+ * Optimiser - Adam
+ * Scheduler - ReduceLROnPlateau
+ * Loss - BCE, BCE
+ * Total No of Epochs trained for - 15
+ * Total number of data used - 40K
+
 
 
 
