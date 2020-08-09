@@ -10,11 +10,11 @@ There are two parts to this assignment.
 This part involved the prepararion of data, 1.2M images were prepared and their details  are below.
 
 
-# GDrive link for the dataset
+## GDrive link for the dataset
 
 https://drive.google.com/drive/folders/1Fb0LeHB-km0M959_lyhbdF0Y52-id9bf?usp=sharing
 
-# Dataset Statistics
+## Dataset Statistics
 
 ## Kinds of images 
 
