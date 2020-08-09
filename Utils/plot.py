@@ -156,4 +156,90 @@ class Plot(object):
           fig = plt.figure(figsize=(7,7))
           plt.imshow(np.transpose(npimg, (1, 2, 0)),interpolation='none')
           plt.title(classes[i])
+
+    
+    @staticmethod
+    def show_tiny_classwise_image(train_loader, classes):
+        iter_train_loader = iter(train_loader)
+        images, labels = iter_train_loader.next()
+        for i in range(len(train_loader)):
+          index = [j for j in range(len(labels)) if labels[j] == classes[i]]
+          
+          img = torchvision.utils.make_grid(images[0:5],nrow=5,padding=2,scale_each=True)
+          img = img / 2 + 0.442  # unnormalize
+          npimg = img.numpy()
+          fig = plt.figure(figsize=(7,7))
+          plt.imshow(np.transpose(npimg, (1, 2, 0)),interpolation='none')
+          plt.title(classes[i])
+
+    @staticmethod
+    def show_tiny_image(train_loader, classes):
+        iter_train_loader = iter(train_loader)
+        images, labels = iter_train_loader.next()
+        img = torchvision.utils.make_grid(images[0:10],nrow=10,padding=2,scale_each=True)
+        img = img / 2 + 0.442  # unnormalize
+        npimg = img.numpy()
+        fig = plt.figure(figsize=(10,10))
+        plt.imshow(np.transpose(npimg, (1, 2, 0)),interpolation='none')
+
+
+def display_result_img(target, predict, type, name):
+
+    fig, a =plt.subplots(2,1,figsize=(45,35))
+    fig.suptitle(type +" "+ name,fontweight="bold",fontsize=45,y=1.1,color='r')
+    
+
+    target= target*255
+    target = target.numpy()
+
+    predict = predict*255
+    predict = predict.numpy()
+
+    plt.axis("off")
+    a[0].imshow(target[0], cmap = "gray")
+    a[1].imshow(predict[0], cmap = "gray")
+  
+    a[0].set_title('Target '+type,fontsize=35)
+    a[1].set_title('Predicted ' +type,fontsize=35)
+    a[0].axis("off")
+    a[1].axis("off")
+
+
+def display_results(model,test_loader,device,name):
+    batch = next(iter(test_loader))
+    images,mask_target,depth_target = batch
+    
+    mask_pred, depth_pred = model(images.to(device))
+    
+    mask_pred = mask_pred.detach().cpu()
+    depth_pred = depth_pred.detach().cpu()
+    
+    
+    mask = torch.unsqueeze(mask_target, 1)
+    depth = torch.unsqueeze(depth_target, 1)
+    
+    images = []
+    mask_target_list = []
+    depth_target_list = []
+    mask_pred_list = []
+    depth_pred_list = []
+    
+    for i in range(8):
+      mask_target_list.append(mask[i])
+      depth_target_list.append(depth[i])
+      mask_pred_list.append(mask_pred[i])
+      depth_pred_list.append(depth_pred[i])
+      
+    mask_t = torchvision.utils.make_grid(mask_target_list,nrow=5,padding=1,scale_each=True)
+    mask_p =torchvision.utils.make_grid(mask_pred_list,nrow=5,padding=1,scale_each=True)
+    depth_t = torchvision.utils.make_grid(depth_target_list,nrow=5,padding=1,scale_each=True)
+    depth_p = torchvision.utils.make_grid(depth_pred_list,nrow=5,padding=1,scale_each=True)
+    display_result_img(mask_t,mask_p, "mask", name = name)
+    display_result_img(depth_t,depth_p, "depth", name = name)
+
+    
+
+
+
+        
               

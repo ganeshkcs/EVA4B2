@@ -3,6 +3,7 @@ import torch.nn.functional as F
 import torch.nn as nn
 from tqdm import tqdm
 from helper import HelperModel
+from dice import dice_coefficient, iou_score
 
 
 
@@ -50,3 +51,51 @@ class Test(object):
             100. * correct / len(test_loader.dataset)))
 
         self.test_acc.append(100. * correct / len(test_loader.dataset))
+    
+    def test_mask_depth(self,model, device, mask_criterion, depth_criterion, test_loader, epoch):
+        model.eval()
+        mask_loss = 0
+        depth_loss = 0
+        correct = 0
+        mask_coef = 0
+        depth_coef = 0
+        total_loss = 0
+        total_length = len(test_loader)
+        self.test_losses = []
+        self.test_acc = []
+        iou_mask = 0
+        iou_dense = 0
+        with torch.no_grad():
+            for data, mask_target, depth_target in tqdm(test_loader):
+                data, mask_target, depth_target = data.to(device), mask_target.to(device), depth_target.to(device)
+                mask_target = mask_target.unsqueeze_(1)
+                depth_target = depth_target.unsqueeze_(1)
+                mask_target = torch.sigmoid(mask_target)
+                depth_target = torch.sigmoid(depth_target)
+                mask_pred, depth_pred = model(data)
+                # mask_loss += mask_criterion(depth_pred,mask_target,).item()  
+                # depth_loss += depth_criterion(depth_pred,mask_target,).item()
+                mask_loss += mask_criterion(mask_pred,mask_target,).item()  
+                depth_loss += depth_criterion(depth_pred,depth_target,).item()
+                test_loss = mask_loss+depth_loss
+                total_loss += test_loss
+                mask_coef += dice_coefficient(mask_pred,mask_target, mask= True).item()
+                depth_coef += dice_coefficient(depth_pred, depth_target, mask=False).item()
+                iou_mask += iou_score(mask_pred.detach().cpu().numpy(), mask_target.detach().cpu().numpy())
+                iou_dense += iou_score(depth_pred.detach().cpu().numpy(), depth_target.detach().cpu().numpy())
+    
+              
+        # test_loss /= (2 * total_length)
+        # total_loss /= (2 * total_length)
+
+        test_loss /= (total_length)
+        total_loss /= (total_length)
+
+        self.test_losses.append((mask_loss/total_length, depth_loss/total_length,test_loss))
+        self.test_acc.append((mask_coef + depth_coef)/ total_length)
+        print('\nTest set: Average loss: {:.4f}'.format(test_loss))
+        print(f'IOU Mask={iou_mask/total_length:0.4f}')
+        print(f'IOU Depth={iou_dense/total_length:0.4f}')
+        # print(f'Mask Coefficient ={mask_coef/total_length:0.4f}')
+        # print(f'Depth Coefficient ={depth_coef/total_length:0.4f}')
+        # return self.test_losses,self.test_acc
