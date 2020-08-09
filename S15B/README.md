@@ -1,4 +1,13 @@
-# Assignment 15A:
+# Assignment:
+
+There are two parts to this assignment.
+
+1. Data Preparation.
+2. Model Implementation.
+
+# Data Preparation:
+
+This part involved the prepararion of data, 1.2M images were prepared and their details  are below.
 
 
 # GDrive link for the dataset
@@ -140,9 +149,11 @@ depth images | [0.40361160039901733]| [0.19922664761543274]
       
 
 
-# Assignment 15B:
+# Model Implementation:
 
-# Requirement :
+This part involved choosing the right model, the prediction of mask and depth for the input images, details are given below.
+
+## Requirement :
 
 Given an image with foreground objects and background image, predict the depth map as well as a mask for the foreground object. 
 
