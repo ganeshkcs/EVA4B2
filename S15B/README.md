@@ -255,6 +255,22 @@ Modular( other files)  : https://github.com/ganeshkcs/EVA4B2/tree/master/Utils
 ![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/depth405.png)
 ![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/mask405.png)
 
+![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/mask1.png)
+![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/depth1.png)
+
+![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/mask.png)
+![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/depth.png)
+
+
+## Key References
+
+1. https://github.com/milesial/Pytorch-UNet
+2. https://towardsdatascience.com/understanding-semantic-segmentation-with-unet-6be4f42d4b47
+3. https://www.jeremyjordan.me/semantic-segmentation/
+4. https://becominghuman.ai/image-masking-challenge-a-kaggle-competition-5a66f30aa335
+
+
+
 
 
 
