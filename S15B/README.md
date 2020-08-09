@@ -1,3 +1,4 @@
+# Assignment 15A:
 
 
 # GDrive link for the dataset
@@ -137,6 +138,7 @@ depth images | [0.40361160039901733]| [0.19922664761543274]
       * mean and std where calculated
       * Code : https://github.com/ganeshkcs/EVA4B2/blob/master/S15A/S15_Statistics.ipynb
       
+
 
 # Assignment 15B:
 
