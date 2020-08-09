@@ -165,7 +165,7 @@ While evealuating the model, there were following questions for which the answer
 
 1. How to get multiple outputs.
 2. What is the loss function to choose.
-3. How many epocs to run.
+3. How many epochs to run.
 4. What optimiser and scheduler to use.
 5. At what size we need to send the images(inputs)
 
@@ -173,9 +173,27 @@ After going throuh papers, finally settled for Unet arcitecture.
 
 The model would convolute for depth and mask in forward function and give two outputs.
 
+To reduce the parameters the input to the model was resized to 64 * 64, also the output is given at grayscale.
+
+Model was run for 15 epochs.
+
 ![model](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/model2.gif)
 
-The code for model can be found here ![mc](https://github.com/ganeshkcs/EVA4B2/blob/master/Utils/models/unet.py)
+**Main parts in the model**
+
+       * DobleConv - Conv2D(kernel Size = 3)->BatchNormalisation->Relu->Conv2D(kernel Size = 3)->BatchNormalisation->Relu
+       * Down - MaxPool -> DoubleConv
+       * Up - Upsample(bilinear) -> DoubleConv -> Concatenate.
+       * OutC - Conv2d(kernel Size = 1)
+       * 64 x 64 is the final size of output.
+
+The code for model can be found here. Code: https://github.com/ganeshkcs/EVA4B2/blob/master/Utils/models/unet.py
+
+## Loss and Accuracy:
+
+There are variuos loss and accuracy to choose from, so out of 
+
+
 
 
 
