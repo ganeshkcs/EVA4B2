@@ -177,6 +177,7 @@ To reduce the parameters the input to the model was resized to 64 * 64, also the
 
 Model was run for 15 epochs.
 
+
 ![model](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/model2.gif)
 
 **Main parts in the model**
@@ -205,17 +206,22 @@ So chose BCEWithLogitLoss for mask and SSIM for Depth, but on implementation fou
 
 Also used Adam optimiser and ReduceLROnPlateau was used as scheduler.
 
-## Implementation
+## Implementation and Challenges
 
 The code to get the output from model is implemented, the details are as below.
 
- * Parameters - 8 Million 
+ * Parameters - 8,778,274 
  * Optimiser - Adam
  * Scheduler - ReduceLROnPlateau
  * Mask Loss - BCE
  * Depth Loss - BCE
  * Epochs - 15
  * Total number of data used - 40K
+ * IOU - 75(mask),69(depth)
+ 
+ The main challenge was Input/Output error in colab so had to create 100 zip files for fg_bg, fg_bg_mask, fg_bg_depth as colab was not reading from google drive if     there are more than 4000 images in a folder. Also if I take the whole dataset 400k the colab is causing timeout issue, thought of going with batches, but later decided to stick with 40k images as training in batches would be new learning for the model and I thought the model should learn the whole dataset at a shot. Also if the batch size is more than 32 the colab crashed and I have used a batch size of 8.
+ 
+ 
  
 ## Code Links 
 
