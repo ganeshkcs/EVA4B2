@@ -212,8 +212,9 @@ The code to get the output from model is implemented, the details are as below.
  * Parameters - 8 Million 
  * Optimiser - Adam
  * Scheduler - ReduceLROnPlateau
- * Loss - BCE, BCE
- * Total No of Epochs trained for - 15
+ * Mask Loss - BCE
+ * Depth Loss - BCE
+ * Epochs - 15
  * Total number of data used - 40K
  
 ## Code Links 
@@ -235,6 +236,27 @@ Albumentaion : https://github.com/ganeshkcs/EVA4B2/blob/master/Utils/albumentati
 IOU/DICE : https://github.com/ganeshkcs/EVA4B2/blob/master/Utils/dice.py
 
 Modular( other files)  : https://github.com/ganeshkcs/EVA4B2/tree/master/Utils
+
+
+## Predicted Vs Ground Truth Images
+
+![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/4011depth.png)
+![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/4011mask.png)
+
+![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/4010depth.png)
+![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/4010mask.png)
+
+![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/407depth.png)
+![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/407mask.png)
+
+![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/406depth.png)
+![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/406mask.png)
+
+![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/depth405.png)
+![1](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/mask405.png)
+
+
+
 
 
 
