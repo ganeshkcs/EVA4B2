@@ -138,5 +138,14 @@ depth images | [0.40361160039901733]| [0.19922664761543274]
       * Code : https://github.com/ganeshkcs/EVA4B2/blob/master/S15A/S15_Statistics.ipynb
       
 
-    
+# Assignment 15B:
+
+# Requirement :
+
+Given an image with foreground objects and background image, predict the depth map as well as a mask for the foreground object. 
+
+![REQ](https://github.com/ganeshkcs/EVA4B2/blob/master/S15B/PDA1.gif)
+
+
+
 
